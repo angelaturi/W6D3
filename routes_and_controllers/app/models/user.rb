@@ -7,15 +7,15 @@ class User < ApplicationRecord
         class_name: :Artwork,
         dependent: :destroy
 
-    # has_many :artists,
-    #     through: :artworks,
-    #     source: :artist
-
     has_many :shares,
         primary_key: :id,
         foreign_key: :viewer_id,
         class_name: :ArtworkShare,
         dependent: :destroy
+
+    has_many :shared_artworks,
+        through: :shares,
+        source: :artwork
 
     
 

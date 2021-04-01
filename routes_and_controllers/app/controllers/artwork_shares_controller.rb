@@ -13,6 +13,11 @@ class ArtworkSharesController < ApplicationController
         end 
     end
 
+    #  def show
+    #     artwork_share = ArtworkShare.find(params[:id])
+    #     render json: artwork_share
+    # end
+
 
     def destroy
         artwork_share = ArtworkShare.find(params[:id])
