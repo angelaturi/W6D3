@@ -15,11 +15,20 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :create, :destroy, :show, :update] do
     resources :artworks, only: [:index]
     resources :comments, only: [:index]
+    
   end 
 
-  resources :artworks, only: [:index, :create, :destroy, :show, :update]
+  resources :artworks, only: [:index, :create, :destroy, :show, :update] do
+    member do
+      post :favorite, to: 'artworks#favorite', as: 'favorite_artwork'
+    end
+  end
 
-  resources :artwork_shares, only: [:index, :show, :create, :destroy]  
+  resources :artwork_shares, only: [:index, :show, :create, :destroy] do
+    member do
+      post :favorite, to: 'artwork_shares#favorite', as: 'favorite_artwork_shares'
+    end
+  end
 
   resources :comments, only: [:index, :create, :destroy]  
 end

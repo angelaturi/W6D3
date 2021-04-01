@@ -1,5 +1,6 @@
 class Artwork < ApplicationRecord
     validates :title, :image_url, presence: true
+    validates :image_url, uniqueness: true
     validates :artist_id, presence: true
     
     belongs_to :artist,
@@ -22,4 +23,10 @@ class Artwork < ApplicationRecord
         class_name: :Comment,
         dependent: :destroy
     
+    has_many :likes, as: :likeable
+
+    has_many :collection_artworks,
+        primary_key: :id,
+        foreign_key: :artwork_id,
+        class_name: :CollectionArtwork
 end 

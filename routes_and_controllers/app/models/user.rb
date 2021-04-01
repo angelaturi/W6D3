@@ -23,5 +23,22 @@ class User < ApplicationRecord
         class_name: :Comment,
         dependent: :destroy
         
+    has_many :likes,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :Llike
+
+    has_many :collections,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :Collection
+
+    def favorite_artworks
+        artworks.where(favorite: true)
+     end
+
+    def favorite_shared_artworks
+        shared_artworks.where('artwork_shares.favorite = true')
+    end
 
 end 

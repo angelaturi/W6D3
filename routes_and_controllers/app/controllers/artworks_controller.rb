@@ -52,6 +52,15 @@ class ArtworksController < ApplicationController
 
     end 
 
+    def favorite
+        # debugger
+        artwork = Artwork.find_by(id: params[:id], artist_id: params[:user_id])
+        # debugger
+        artwork.favorite = true
+        artwork.save
+        render json: artwork
+    end
+
     private 
 
     def artwork_params
