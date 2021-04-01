@@ -21,3 +21,5 @@ artwork2 = Artwork.create!(title: 'Starry Night', image_url: 'www.starrynight.co
 
 artwork_share1 = ArtworkShare.create!(artwork_id: artwork1.id, viewer_id: user3.id)
 artwork_share2 = ArtworkShare.create!(artwork_id: artwork2.id, viewer_id: user4.id)
+
+comment1 = Comment.create!(body: 'I LOVE THIS ARTWORK!', user_id: user1.id, artwork_id: artwork1.id)
